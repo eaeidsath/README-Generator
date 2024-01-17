@@ -103,9 +103,9 @@ ${usage}
     
 ## Contributing
 
-Contributors: ${username}, ${contribution}
-Credits: ${credits}
-Contribution instructions: ${howToContribute}
+- Contributors: [${username}](github.com/${username}), ${contribution}
+- Credits: ${credits}
+- Contribution instructions: ${howToContribute}
     
 ## License
 
