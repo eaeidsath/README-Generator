@@ -1,19 +1,7 @@
-// TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// TODO: Create an array of questions for user input
-const questions = [];
-const licenses = ['MIT License', 'Apache License 2.0', 'GNU General Public License v3.0', 'Boost Software License 1.0 ', 'None' ]
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
+const licenses = ['MIT License', 'Apache License 2.0', 'GNU General Public License v3.0', 'Boost Software License 1.0 ', 'None']
 
 inquirer
   .prompt([
@@ -77,8 +65,20 @@ inquirer
   .then((data) => {
 
     const { username, email, title, description, install, usage, contribution, credits, howToContribute, license, test } = data;
-
+    if (license === 'MIT License') {
+        var licenseLink = 'https://img.shields.io/badge/License-MIT-yellow.svg'
+    } else if (license === 'Apache License 2.0') {
+        var licenseLink = 'https://img.shields.io/badge/License-Apache_2.0-blue.svg'
+    } else if (license === 'GNU General Public License v3.0') {
+        var licenseLink = 'https://img.shields.io/badge/License-GPLv3-blue.svg'
+    } else if (license === 'Boost Software License 1.0 ') {
+        var licenseLink = 'https://img.shields.io/badge/License-Boost_1.0-lightblue.svg'
+    } else if (license === 'None') {
+        var licenseLink = 'None'
+    };
     const readMe = `# ${title}
+
+![License](${licenseLink})
 
 ## Description
     
@@ -109,7 +109,6 @@ Contribution instructions: ${howToContribute}
 ## License
 
 The following license is being used for this project: ${license}.
-![License](https://img.shields.io/github/license/${username}/${title})
     
 ## Tests
 
@@ -117,7 +116,7 @@ ${test}
 
 ## Questions
 
-Please direct questions to [${username}](github.com/${username}) or email your questions to ${email}.`
+Please direct questions to [${username}](github.com/${username}) or email your questions to ${email}.`;
 
     fs.writeFile('newREADME.md', readMe, (err) =>
       err ? console.log(err) : console.log('Success!')
