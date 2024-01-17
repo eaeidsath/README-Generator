@@ -38,7 +38,7 @@ inquirer
     {
         type: 'input',
         name: 'contribution',
-        message: 'Enter the GitHub username or contact information of contributors to the project.',
+        message: 'Aside from yourself, enter the GitHub username or contact information of contributors to the project.',
     },
     {
         type: 'input',
@@ -88,9 +88,10 @@ ${description}
     
 - [Installation](#installation)
 - [Usage](#usage)
-- [Credits](#credits)
+- [Contributing](#contributing)
 - [License](#license)
 - [Tests](#tests)
+- [Questions](#questions)
     
 ## Installation
     
@@ -100,7 +101,7 @@ ${install}
     
 ${usage}
     
-## Contributing and Credits
+## Contributing
 
 Contributors: ${username}, ${contribution}
 Credits: ${credits}

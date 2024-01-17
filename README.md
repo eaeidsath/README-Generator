@@ -20,7 +20,7 @@ This application is my first code created for use with NodeJS and the terminal, 
     
 ## Installation
     
-Install the latest version of NodeJS from their website. You will need the Inquirer package to run this program. To install this, navigate to the folder containing this project and runnpm i inquirer. Once that is installed, you can start the generator by running node index.js.
+Install the latest version of NodeJS from their website. You will need the Inquirer package to run this program. To install this, navigate to the folder containing this project and run npm i inquirer. Once that is installed, you can start the generator by running node index.js.
     
 ## Usage
     
