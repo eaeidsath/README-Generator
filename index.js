@@ -4,6 +4,7 @@ const fs = require('fs');
 
 // TODO: Create an array of questions for user input
 const questions = [];
+const licenses = ['MIT License', 'Apache License 2.0', 'GNU General Public License v3.0', 'Boost Software License 1.0 ', 'None' ]
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
@@ -17,41 +18,106 @@ init();
 inquirer
   .prompt([
     {
-      type: 'input',
-      name: 'name',
-      message: 'What is your name?',
+        type: 'input',
+        name: 'username',
+        message: 'What is your GitHub username?',
     },
     {
         type: 'input',
-        name: 'location',
-        message: 'Where are you from?',
+        name: 'email',
+        message: 'What is your email address?',
     },
     {
         type: 'input',
-        name: 'major',
-        message: 'What did you major in or study?',
+        name: 'title',
+        message: 'What is the title of your project?',
     },
     {
         type: 'input',
-        name: 'skills',
-        message: 'What are some of your skills?',
+        name: 'description',
+        message: 'Enter a description of your project.',
     },
     {
         type: 'input',
-        name: 'git',
-        message: 'Enter your Github username.',
+        name: 'install',
+        message: 'Enter the installation instructions for your project.',
     },
     {
         type: 'input',
-        name: 'linkedin',
-        message: 'Enter your LinkedIn username.',
+        name: 'usage',
+        message: 'Enter the usage instuctions for your project.',
+    },
+    {
+        type: 'input',
+        name: 'contribution',
+        message: 'Enter the GitHub username or contact information of contributors to the project.',
+    },
+    {
+        type: 'input',
+        name: 'credits',
+        message: 'Enter the references to credit any material your sourced for your project.',
+    },
+    {
+        type: 'input',
+        name: 'howToContribute',
+        message: 'What should users know about if/how they can contribute to the project?',
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'Select the license you are using for your project.',
+        choices: licenses
+    },
+    {
+        type: 'input',
+        name: 'test',
+        message: 'Enter any test examples you have for your project.',
     },
   ])
   .then((data) => {
 
-    const { name, location, major, skills, git, linkedin } = data;
+    const { username, email, title, description, install, usage, contribution, credits, howToContribute, license, test } = data;
 
-    const readMe = `'<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Portfolio</title></head><body><nav><h1>Portfolio of ${name}</h1></nav> <main><section><h2>About me</h2><p>I am from ${location}.</p><p>I have completed studies in ${major}.</p><p>Some of my skills include ${skills}.</p></section><section><h2>Contact me</h2><p>My GitHub username is ${git}.</p><p>My LinkedIn username is ${linkedin}.</p></section></main></body></html>'`
+    const readMe = `# ${title}
+
+## Description
+    
+${description}
+    
+## Table of Contents
+    
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Tests](#tests)
+    
+## Installation
+    
+${install}
+    
+## Usage
+    
+${usage}
+    
+## Contributing and Credits
+
+Contributors: ${username}, ${contribution}
+Credits: ${credits}
+Contribution instructions: ${howToContribute}
+    
+## License
+
+The following license is being used for this project: ${license}.
+![License](https://img.shields.io/github/license/${username}/${title})
+    
+## Tests
+
+${test}
+
+## Questions
+
+Please direct questions to [${username}](github.com/${username}) or email your questions to ${email}.`
 
     fs.writeFile('newREADME.md', readMe, (err) =>
       err ? console.log(err) : console.log('Success!')
